@@ -1,0 +1,34 @@
+{
+  "name": "mindquest-",
+  "version": "1.0.0",
+  "description": "MindQuest adalah platform ujian dan kuis interaktif untuk murid SMA yang memberikan pengalaman belajar seperti sebuah petualangan. Setiap soal dianggap sebagai sebuah \"quest\" yang harus diselesaikan, lengkap dengan pertanyaan pilihan ganda dan hasil akhir berupa skor yang menunjukkan kemampuan murid.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "node --watch app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MFarhan2407/MindQuest-.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MFarhan2407/MindQuest-/issues"
+  },
+  "homepage": "https://github.com/MFarhan2407/MindQuest-#readme",
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "connect-flash": "^0.1.1",
+    "ejs": "^3.1.10",
+    "express": "^5.1.0",
+    "express-session": "^1.18.2",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7"
+  },
+  "devDependencies": {
+    "sequelize-cli": "^6.6.3"
+  }
+}
