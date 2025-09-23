@@ -13,13 +13,14 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
       Profile.belongsTo(models.User)
     }
-    
+
   }
   Profile.init({
     address: DataTypes.STRING,
     bio: DataTypes.STRING,
     avatar: DataTypes.STRING,
-    UserId: DataTypes.INTEGER
+    UserId: DataTypes.INTEGER,
+    fullName: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'Profile',
