@@ -1,3 +1,4 @@
+const { where } = require('sequelize')
 const { User, Profile } = require('../models')
 const bcrypt = require('bcryptjs')
 
@@ -21,6 +22,7 @@ class AuthController {
 
     static async register(req, res) {
         try {
+            // console.log(req.body);
             // console.log(req.body);
             const { username, email, password } = req.body
             User.create({
@@ -71,14 +73,23 @@ class AuthController {
 
     static async login(req, res) {
         try {
-            const { username, email, password } = req.body
-            const users = [{ email: email, username: username, password: bcrypt.hashSync(password, 8) }] //data dummy
-            const user = users.find(u => u.username === username);
+            const { username, email, password} = req.body
+            // const users = [{id: 1, email: email, username: username, password: bcrypt.hashSync(password, 8), role:'STUDENT'}] //data dummy
+            const user = await User.findOne({
+                where: {
+                    username: username
+                }
+            })
+            // const userName = users.find(u => u.username === username);
+            // res.send(user)
             if (user && bcrypt.compareSync(password, user.password)) {
                 req.session.userId = user.id
-                
+                if(user.role ==='STUDENT') {
                     res.redirect('/mindquest/student')
-                
+                    // res.send('success login')
+                } else {
+                    res.redirect('/mindquest/educator')
+                }
             } else {
                 res.status(401).send('Invalid credentials');
             }
