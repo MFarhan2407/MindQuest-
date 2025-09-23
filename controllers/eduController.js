@@ -6,15 +6,20 @@ class eduController {
             const user = await User.findOne({
                 where: { id }
             })
-            // res.send(user)
-            // console.log(user);
-            
-            // res.send('masuk')
             res.render("edu-dashboard", { user })
         } catch (error) {
             res.send(error)
         }
     }
+
+    static async areaEducator(req, res) {
+        try {
+            res.render("edu-area")
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
 }
 
 module.exports = eduController
