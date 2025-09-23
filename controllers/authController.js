@@ -94,15 +94,13 @@ class AuthController {
             if (user && bcrypt.compareSync(password, user.password)) {
                 req.session.userId = user.id
                 req.session.role = user.role
+
+                if(!profile){
+                    res.redirect('/profile/add')
+                }
                 if(user.role ==='STUDENT') {
-<<<<<<< HEAD
-                    if(!profile){
-                        res.redirect('/profile/add')
-                    }
-                    res.redirect('/mindquest/student')
-=======
                     res.redirect(`/mindquest/student`)
->>>>>>> 585d3286d7ec02723229fa13ee597f0207ca5d60
+
                     // res.send('success login')
                 } else {
                     res.redirect('/mindquest/educator')
