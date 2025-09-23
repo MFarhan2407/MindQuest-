@@ -75,7 +75,10 @@ class AuthController {
             const users = [{ email: email, username: username, password: bcrypt.hashSync(password, 8) }] //data dummy
             const user = users.find(u => u.username === username);
             if (user && bcrypt.compareSync(password, user.password)) {
-                res.redirect('/mindquest')
+                req.session.userId = user.id
+                if(User.role==='student') {
+                    res.redirect('/mindquest/student')
+                }
             } else {
                 res.status(401).send('Invalid credentials');
             }
