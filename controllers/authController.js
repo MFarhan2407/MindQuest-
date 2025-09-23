@@ -111,8 +111,12 @@ class AuthController {
                 req.session.userId = user.id
                 req.session.role = user.role
 
+                if(!profile){
+                    res.redirect('/profile/add')
+                }
                 if(user.role ==='STUDENT') {
                     res.redirect(`/mindquest/student`)
+
                     // res.send('success login')
                 } else {
                     res.redirect('/mindquest/educator')
