@@ -1,6 +1,7 @@
 const express = require('express')
 const flash = require('connect-flash')
 const session = require('express-session')
+const bcrypt = require('bcryptjs')
 const route = require('./route')
 const app = express()
 
@@ -17,7 +18,6 @@ app.use(session({
 }))
 
 app.use(flash())
-
 
 app.use(route)
 
