@@ -1,6 +1,7 @@
 const route = require('express').Router()
 const authRoutes = require('./authRoutes')
 const profileRoute = require('./profile')
+const eduRoute = require('./eduRoutes')
 
 route.get('/', (req, res) => {
     res.redirect('/auth')
@@ -16,7 +17,11 @@ const requireAuth = (req, res, next) => {
 
 route.use('/auth', authRoutes)
 
-route.use('/', requireAuth, profileRoute)
+// route.use('/', requireAuth, profileRoute)
+
+route.use('/mindquest', eduRoute)
+
+
 
 
 
