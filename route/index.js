@@ -3,6 +3,8 @@ const authRoutes = require('./authRoutes')
 const profileRoute = require('./profile')
 const eduRoute = require('./eduRoutes')
 
+const studentRoute = require(`./stuRoutes`)
+
 route.get('/', (req, res) => {
     res.redirect('/auth')
 })
@@ -23,6 +25,10 @@ route.use('/mindquest', eduRoute)
 
 
 
+
+
+
+route.use(`/mindquest`, requireAuth, studentRoute)
 
 
 
