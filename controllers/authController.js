@@ -22,7 +22,8 @@ class AuthController {
 
     static async register(req, res) {
         try {
-            console.log(req.body);
+            // console.log(req.body);
+            // console.log(req.body);
             const { username, email, password } = req.body
             User.create({
                 username,
@@ -52,9 +53,10 @@ class AuthController {
                 address: alamat,
                 bio,
                 avatar,
-                fullName: namaLengkap
+                fullName: namaLengkap,
+                UserId: req.session.userId
             })
-            res.redirect('/profil')
+            res.redirect('/mindquest/student')
         } catch (error) {
             // console.log(error);
             
@@ -81,8 +83,17 @@ class AuthController {
             })
             // const userName = users.find(u => u.username === username);
             // res.send(user)
+            const profile = await Profile.findOne({
+                where: {
+                    UserId: user.id
+                }
+            })
             if (user && bcrypt.compareSync(password, user.password)) {
                 req.session.userId = user.id
+                req.session.role = user.role
+                if(!profile){
+                    res.redirect('/profile/add')
+                }
                 if(user.role ==='STUDENT') {
                     res.redirect('/mindquest/student')
                     // res.send('success login')
