@@ -6,9 +6,17 @@ route.get('/', (req, res) => {
     res.redirect('/auth')
 })
 
+const requireAuth = (req, res, next) => {
+    if(req.session.userId) {
+        next()
+    } else {
+        res.redirect('/auth/login')
+    }
+}
+
 route.use('/auth', authRoutes)
 
-route.use('/', profileRoute)
+route.use('/',requireAuth, profileRoute)
 
 
 
