@@ -5,7 +5,7 @@ const bcrypt = require('bcryptjs')
 class AuthController {
     static async home(req, res) {
         try {
-
+            res.render('home')
         } catch (error) {
             res.send(error)
         }
@@ -22,6 +22,7 @@ class AuthController {
 
     static async register(req, res) {
         try {
+            // console.log(req.body);
             // console.log(req.body);
             const { username, email, password } = req.body
             User.create({
@@ -52,11 +53,12 @@ class AuthController {
                 address: alamat,
                 bio,
                 avatar,
-                fullName: namaLengkap
+                fullName: namaLengkap,
+                UserId: req.session.userId
             })
-            res.redirect('/profile')
+            res.redirect('/mindquest/student')
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             
             res.send(error)
         }
@@ -81,8 +83,17 @@ class AuthController {
             })
             // const userName = users.find(u => u.username === username);
             // res.send(user)
+            const profile = await Profile.findOne({
+                where: {
+                    UserId: user.id
+                }
+            })
             if (user && bcrypt.compareSync(password, user.password)) {
                 req.session.userId = user.id
+                req.session.role = user.role
+                if(!profile){
+                    res.redirect('/profile/add')
+                }
                 if(user.role ==='STUDENT') {
                     res.redirect('/mindquest/student')
                     // res.send('success login')
@@ -93,7 +104,7 @@ class AuthController {
                 res.status(401).send('Invalid credentials');
             }
         } catch (error) {
-            console.log(error);
+            // console.log(error);
             
             res.send(error)
         }
