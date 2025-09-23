@@ -54,7 +54,7 @@ class AuthController {
                 avatar,
                 fullName: namaLengkap
             })
-            res.redirect('/profile')
+            res.redirect('/profil')
         } catch (error) {
             // console.log(error);
             
@@ -98,6 +98,8 @@ class AuthController {
             res.send(error)
         }
     }
+
+
 }
 
 module.exports = AuthController
