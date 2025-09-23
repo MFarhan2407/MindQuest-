@@ -56,7 +56,10 @@ class AuthController {
                 fullName: namaLengkap,
                 UserId: req.session.userId
             })
-            res.redirect('/mindquest/student')
+            // res.send(req.session.role)
+            const role = req.session.role.toLowercase()
+            // console.log(req.session.role)
+            res.redirect(`/mindquest/${role}`) //gimana caranya biar dinamis antara student dan educator
         } catch (error) {
             // console.log(error);
             
@@ -95,7 +98,7 @@ class AuthController {
                     res.redirect('/profile/add')
                 }
                 if(user.role ==='STUDENT') {
-                    res.redirect('/mindquest/student')
+                    res.redirect(`/mindquest/student`)
                     // res.send('success login')
                 } else {
                     res.redirect('/mindquest/educator')
