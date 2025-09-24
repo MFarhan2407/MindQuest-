@@ -36,6 +36,21 @@ class AuthController {
         }
     }
 
+    static async showProfile(req, res) {
+        try {
+            // console.log(req.session);
+            const user = await User.findByPk(req.session.userId, {
+                include: [{
+                    model: Profile
+                }]
+            })
+            
+            res.render("edu-profile", { user })
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
     static async profileForm(req, res) {
         try {
             res.render('profile')
@@ -57,7 +72,7 @@ class AuthController {
                 UserId: req.session.userId
             })
             // res.send(req.session.role)
-            const role = req.session.role.toLowercase()
+            const role = req.session.role.toLowerCase()
             // console.log(req.session.role)
             res.redirect(`/mindquest/${role}`) //gimana caranya biar dinamis antara student dan educator
         } catch (error) {
@@ -92,6 +107,7 @@ class AuthController {
                 }
             })
             if (user && bcrypt.compareSync(password, user.password)) {
+
                 req.session.userId = user.id
                 req.session.role = user.role
 

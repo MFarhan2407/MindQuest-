@@ -20,7 +20,7 @@ const requireAuth = (req, res, next) => {
 
 route.use('/auth', authRoutes)
 
-// route.use('/', requireAuth, profileRoute)
+route.use('/', profileRoute)
 
 route.use('/mindquest', eduRoute)
 
