@@ -5,7 +5,6 @@ const eduRoute = require('./eduRoutes')
 
 const studentRoute = require(`./stuRoutes`)
 
-const studentRoute = require(`./stuRoutes`)
 
 route.get('/', (req, res) => {
     res.redirect('/auth')
