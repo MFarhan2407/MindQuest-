@@ -1,4 +1,5 @@
 'use strict';
+const fs = require('fs').promises
 
 /** @type {import('sequelize-cli').Migration} */
 module.exports = {
@@ -7,7 +8,7 @@ module.exports = {
 
     const result = dataChallenge.map(el => {
 
-      createdAt = updatedAt = new Date()
+      el.createdAt = el.updatedAt = new Date()
 
       return el
     })
