@@ -14,7 +14,11 @@ class eduController {
 
     static async areaEducator(req, res) {
         try {
-            res.render("edu-area")
+            const id = req.session.userId
+            const user = await User.findOne({
+                where: { id }
+            })
+            res.render("edu-area", { user })
         } catch (error) {
             res.send(error)
         }
