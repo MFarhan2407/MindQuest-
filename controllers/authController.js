@@ -13,7 +13,13 @@ class AuthController {
 
     static async registerForm(req, res) {
         try {
-            res.render('register')
+            let errors // undefined
+            console.log(req.query);
+            
+            if (req.query.errors) { // masih dalam bentuk string
+                errors = req.query.errors.split(",") // Array
+            }
+            res.render('register', {errors})
             // res.send("halo")
         } catch (error) {
             res.send(error)
@@ -25,13 +31,17 @@ class AuthController {
             // console.log(req.body);
             // console.log(req.body);
             const { username, email, password } = req.body
-            User.create({
+            await User.create({
                 username,
                 email,
                 password
             })
             res.redirect('/auth/login')
         } catch (error) {
+            if(error.name === 'SequelizeValidationError'){
+                const errors = error.errors.map((el) => el.message)
+                res.redirect(`/auth/register?errors=${errors}`)
+            }
             res.send(error)
         }
     }
@@ -46,6 +56,21 @@ class AuthController {
             })
             
             res.render("edu-profile", { user })
+        } catch (error) {
+            res.send(error)
+        }
+    }
+    
+    static async showProfileStudent(req, res) {
+        try {
+            // console.log(req.session);
+            const user = await User.findByPk(req.session.userId, {
+                include: [{
+                    model: Profile
+                }]
+            })
+            
+            res.render("stu-profile", { user })
         } catch (error) {
             res.send(error)
         }

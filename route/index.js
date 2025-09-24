@@ -22,18 +22,13 @@ route.use('/auth', authRoutes)
 
 route.use('/', profileRoute)
 
-route.use('/mindquest', eduRoute)
-
-
-
-
-
+route.use('/mindquest', requireAuth, eduRoute)
 
 route.use(`/mindquest`, requireAuth, studentRoute)
 
 
 
-route.use(`/mindquest`, requireAuth, studentRoute)
+// route.use(`/mindquest`, requireAuth, studentRoute)
 
 
 
