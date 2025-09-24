@@ -11,7 +11,12 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
-      Profile.belongsTo(models.User)
+      Profile.belongsTo(models.User, 
+        {
+          foreignKey: "UserId",
+          onDelete: 'cascade',
+          onUpdate: 'cascade',
+        })
     }
 
   }
@@ -19,7 +24,10 @@ module.exports = (sequelize, DataTypes) => {
     address: DataTypes.STRING,
     bio: DataTypes.STRING,
     avatar: DataTypes.STRING,
-    UserId: DataTypes.INTEGER,
+    UserId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
     fullName: DataTypes.STRING
   }, {
     sequelize,
