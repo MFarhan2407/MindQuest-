@@ -7,7 +7,7 @@
         "optionD": "6",
         "correctAnswer": "D",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Jika f(x) = 3x + 5 dan g(x) = x², maka (f ∘ g)(2) adalah...",
@@ -17,7 +17,7 @@
         "optionD": "29",
         "correctAnswer": "A",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Nilai dari lim(x→∞) (5x² + 3x - 1)/(2x² - x + 4) adalah...",
@@ -27,7 +27,7 @@
         "optionD": "5",
         "correctAnswer": "B",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Turunan dari f(x) = x³ - 5x² + 4x - 7 adalah...",
@@ -37,7 +37,7 @@
         "optionD": "3x² - 10x - 4",
         "correctAnswer": "A",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Jika f(x) = sin(x²), maka f'(x) adalah...",
@@ -47,7 +47,7 @@
         "optionD": "cos(x) · x",
         "correctAnswer": "A",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Integral dari (2x³ - 3x + 1) dx adalah...",
@@ -57,7 +57,7 @@
         "optionD": "½x⁴ - 3/2x + C",
         "correctAnswer": "A",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Luas daerah di bawah kurva f(x) = x² dari x = 0 sampai x = 2 adalah...",
@@ -67,7 +67,7 @@
         "optionD": "16/3",
         "correctAnswer": "B",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Jika sin(x) = 3/5 dan x di kuadran I, maka sin(2x) adalah...",
@@ -77,7 +77,7 @@
         "optionD": "6/25",
         "correctAnswer": "A",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Sederhanakan tan(x) · cot(x)...",
@@ -87,7 +87,7 @@
         "optionD": "cos²(x)",
         "correctAnswer": "B",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Nilai dari cos(60°) + sin(30°) adalah...",
@@ -97,7 +97,7 @@
         "optionD": "2",
         "correctAnswer": "C",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Diketahui matriks A = [[2, 3], [1, 4]], maka determinan A adalah...",
@@ -107,7 +107,7 @@
         "optionD": "8",
         "correctAnswer": "A",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Jika vektor a = 2i + 3j dan b = i - 4j, maka a · b adalah...",
@@ -117,7 +117,7 @@
         "optionD": "-4",
         "correctAnswer": "A",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Dalam kelas terdapat 10 laki-laki dan 15 perempuan. Peluang terpilih siswa perempuan adalah...",
@@ -127,7 +127,7 @@
         "optionD": "5/6",
         "correctAnswer": "C",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Rata-rata dari data: 5, 7, 9, 11, 13 adalah...",
@@ -137,7 +137,7 @@
         "optionD": "12",
         "correctAnswer": "A",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Jika peluang hujan = 0.3 dan tidak hujan = 0.7, maka peluang terjadi hujan atau tidak hujan adalah...",
@@ -147,7 +147,7 @@
         "optionD": "0",
         "correctAnswer": "C",
         "SubjectId": 1,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Choose the correct sentence.",
@@ -157,7 +157,7 @@
         "optionD": "He gone to school every day.",
         "correctAnswer": "B",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Which word is a synonym of 'happy'?",
@@ -167,7 +167,7 @@
         "optionD": "Tired",
         "correctAnswer": "C",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Complete the sentence: She _____ already eaten.",
@@ -177,7 +177,7 @@
         "optionD": "is",
         "correctAnswer": "B",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "What is the past tense of 'run'?",
@@ -187,7 +187,7 @@
         "optionD": "runs",
         "correctAnswer": "B",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Which sentence is in passive voice?",
@@ -197,7 +197,7 @@
         "optionD": "She wrote a letter.",
         "correctAnswer": "C",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Choose the correct preposition: He is good _____ math.",
@@ -207,7 +207,7 @@
         "optionD": "with",
         "correctAnswer": "B",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Which sentence uses the future perfect tense?",
@@ -217,7 +217,7 @@
         "optionD": "She eats dinner.",
         "correctAnswer": "C",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "What is the antonym of 'strong'?",
@@ -227,7 +227,7 @@
         "optionD": "Hard",
         "correctAnswer": "A",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Choose the correct question tag: You are coming, _____?",
@@ -237,7 +237,7 @@
         "optionD": "do you",
         "correctAnswer": "A",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Which sentence is grammatically correct?",
@@ -247,7 +247,7 @@
         "optionD": "She not like apples.",
         "correctAnswer": "C",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "What is the comparative form of 'good'?",
@@ -257,7 +257,7 @@
         "optionD": "best",
         "correctAnswer": "C",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Choose the correct article: She bought _____ umbrella.",
@@ -267,7 +267,7 @@
         "optionD": "no article",
         "correctAnswer": "B",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Which word is a noun?",
@@ -277,7 +277,7 @@
         "optionD": "Beautiful",
         "correctAnswer": "C",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Choose the correct conjunction: I was tired, _____ I went to bed.",
@@ -287,7 +287,7 @@
         "optionD": "or",
         "correctAnswer": "B",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Which sentence uses a conditional type 1?",
@@ -297,7 +297,7 @@
         "optionD": "If I study, I pass.",
         "correctAnswer": "A",
         "SubjectId": 2,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Apa satuan dari gaya dalam sistem internasional?",
@@ -307,7 +307,7 @@
         "optionD": "Watt",
         "correctAnswer": "B",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Proses fotosintesis terjadi di bagian tumbuhan yang bernama...",
@@ -317,7 +317,7 @@
         "optionD": "Bunga",
         "correctAnswer": "C",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Planet yang dikenal sebagai planet merah adalah...",
@@ -327,7 +327,7 @@
         "optionD": "Saturnus",
         "correctAnswer": "B",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Bagian sel yang berfungsi sebagai pusat kendali adalah...",
@@ -337,7 +337,7 @@
         "optionD": "Sitoplasma",
         "correctAnswer": "C",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Zat yang digunakan tumbuhan untuk menangkap cahaya matahari adalah...",
@@ -347,7 +347,7 @@
         "optionD": "Melanin",
         "correctAnswer": "A",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Benda dikatakan bergerak jika...",
@@ -357,7 +357,7 @@
         "optionD": "Berubah massa",
         "correctAnswer": "C",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Hewan yang berkembang biak dengan cara bertelur disebut...",
@@ -367,7 +367,7 @@
         "optionD": "Metamorf",
         "correctAnswer": "B",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Senyawa air memiliki rumus kimia...",
@@ -377,7 +377,7 @@
         "optionD": "CH₄",
         "correctAnswer": "B",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Alat ukur kuat arus listrik adalah...",
@@ -387,7 +387,7 @@
         "optionD": "Barometer",
         "correctAnswer": "B",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Perubahan wujud dari cair ke gas disebut...",
@@ -397,7 +397,7 @@
         "optionD": "Pembekuan",
         "correctAnswer": "C",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Bagian jantung yang menerima darah dari seluruh tubuh adalah...",
@@ -407,7 +407,7 @@
         "optionD": "Bilik kanan",
         "correctAnswer": "B",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 2
     },
     {
         "question": "Zat makanan yang berfungsi sebagai sumber energi utama adalah...",
@@ -417,7 +417,7 @@
         "optionD": "Mineral",
         "correctAnswer": "C",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Gaya gesek terjadi ketika...",
@@ -427,7 +427,7 @@
         "optionD": "Benda berada di air",
         "correctAnswer": "B",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Sumber energi yang tidak akan habis adalah...",
@@ -437,7 +437,7 @@
         "optionD": "Matahari",
         "correctAnswer": "D",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     },
     {
         "question": "Organ pernapasan utama pada manusia adalah...",
@@ -447,6 +447,6 @@
         "optionD": "Bronkus",
         "correctAnswer": "C",
         "SubjectId": 3,
-        "EducatorId": 7
+        "EducatorId": 1
     }
 ]
