@@ -68,7 +68,7 @@
           <p class=" mb-0" style="color: #1abc9c;"><strong>Educator:</strong> <%= user.username %></p>
         </div>
 
-        <!-- Tabs -->
+  
         <ul class="nav nav-tabs" id="eduTab" role="tablist">
           <li class="nav-item" role="presentation">
             <button class="nav-link active" id="create-tab" data-bs-toggle="tab" data-bs-target="#create" type="button" role="tab">Buat Soal</button>
@@ -114,14 +114,41 @@
 
           <div class="tab-pane fade" id="manage" role="tabpanel">
             <h3 class="mb-3">Daftar Soal</h3>
-            <p class="text-muted">Di sini nanti tampilkan list soal yang sudah dibuat.</p>
+
+            <% if (challenges.length > 0) { %>
+            <table class="table table-striped table-bordered">
+              <thead class="table-success">
+                <tr>
+                  <th>#</th>
+                  <th>Pertanyaan</th>
+                  <th>Mata Pelajaran</th>
+                  <th>Jawaban Benar</th>
+                  <th>Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% challenges.forEach((c, index) => { %>
+                <tr>
+                  <td><%= index + 1 %></td>
+                  <td><%= c.question %></td>
+                  <td><%= c.Subject.title %></td>
+                  <td><%= c.correctAnswer %></td>
+                  <td>
+                    <form action="/mindquest/educator/question/<%= c.id %>/delete" method="POST" onsubmit="return confirm('Yakin ingin menghapus soal ini?')">
+                      <button type="submit" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i> Delete
+                      </button>
+                    </form>
+                  </td>
+                </tr>
+                <% }) %>
+              </tbody>
+            </table>
+            <% } else { %>
+            <p class="text-muted">Belum ada soal yang dibuat.</p>
+            <% } %>
           </div>
 
-          <div class="tab-pane fade" id="score" role="tabpanel">
-            <h3 class="mb-3">Hasil Score Murid</h3>
-            <p class="text-muted">Tampilkan daftar nilai murid setelah submit jawaban.</p>
-          </div>
-        </div>
       </main>
     </div>
   </div>

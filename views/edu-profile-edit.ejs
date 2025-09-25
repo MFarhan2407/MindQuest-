@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Edit Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f6f9;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      background-color: #343a40;
+      padding-top: 1rem;
+    }
+
+    .sidebar .nav-link {
+      color: #bbb;
+      font-weight: 500;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      padding: 10px 15px;
+      transition: 0.2s;
+    }
+
+    .sidebar .nav-link:hover,
+    .sidebar .nav-link.active {
+      color: #1abc9c;
+    }
+
+    .card {
+      border-radius: 12px;
+    }
+
+    .btn-theme {
+      background-color: #1abc9c;
+      color: #f4f6f9;
+      transition: all 0.3s;
+    }
+
+    .btn-theme:hover {
+      opacity: 0.9;
+    }
+
+    label {
+      font-weight: 500;
+      color: #1abc9c;
+    }
+
+    h1 {
+      font-weight: 700;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navbar -->
+  <%- include("partials/nav-bar") %>
+
+  <div class="container-fluid">
+    <div class="row">
+      <!-- Sidebar -->
+      <nav class="col-md-2 col-lg-2 sidebar">
+        <%- include('partials/side-bar.ejs') %>
+      </nav>
+
+      <!-- Main content -->
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+        <h1 class="h2 mb-4 text-uppercase" style="color:#1abc9c;">Edit Profile</h1>
+
+        <div class="card shadow-sm p-4 mb-4">
+          <form action="/mindquest/educator/profile/<%= profile.id %>/edit" method="POST" enctype="multipart/form-data">
+            <div class="mb-3">
+              <label for="username" class="form-label">name</label>
+              <input type="text" class="form-control" id="username" name="name" value="<%= profile.fullName %>" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="email" class="form-label">Email</label>
+              <input type="email" class="form-control" id="email" name="email" value="<%= user.email %>" required>
+            </div>
+
+            <div class="mb-3">
+              <label for="address" class="form-label">Address</label>
+              <input type="text" class="form-control" id="address" name="address" value="<%= profile.address || '' %>">
+            </div>
+
+            <div class="mb-3">
+              <label for="bio" class="form-label">Bio</label>
+              <textarea class="form-control" id="bio" name="bio" rows="3"><%= profile.bio || '' %></textarea>
+            </div>
+
+            <div class="mb-3">
+              <label for="avatar" class="form-label">Avatar</label>
+              <input type="file" class="form-control" id="avatar" name="avatar">
+            </div>
+
+            <button type="submit" class="btn btn-theme">
+              <i class="bi bi-save"></i> Save Changes
+            </button>
+          </form>
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
