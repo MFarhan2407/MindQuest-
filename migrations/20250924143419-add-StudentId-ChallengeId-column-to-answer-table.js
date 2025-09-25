@@ -11,7 +11,7 @@ module.exports = {
         key: 'id'
       },
       onUpdate: 'CASCADE',
-      onDelete: 'SET NULL',
+      onDelete: 'CASCADE',
     });
 
     await queryInterface.addColumn('Answers', 'StudentId', {
@@ -22,7 +22,7 @@ module.exports = {
         key: 'id'
       },
       onUpdate: 'CASCADE',
-      onDelete: 'SET NULL',
+      onDelete: 'CASCADE',
     });
   
     /**
