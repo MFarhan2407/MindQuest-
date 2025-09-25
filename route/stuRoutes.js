@@ -8,5 +8,4 @@ route.get('/student/subject/challenge/:SubjectId', StuController.showChallenge)
 route.post('/student/subject/challenge/:SubjectId', StuController.submitAnswer)
 route.get('/student/score', StuController.showScore)
 
-
 module.exports = route

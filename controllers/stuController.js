@@ -86,7 +86,7 @@ class StuController {
 
             const challenges = subject.Challenges
 
-            const correctAnswersToInsert = [];
+            // const correctAnswersToInsert = [];
 
             answers.forEach((userAnswer, index) => {
                 if (challenges[index]) {
@@ -106,9 +106,9 @@ class StuController {
                 await Answer.bulkCreate(correctAnswersToInsert);
             }
 
-            req.flash('success', `Kamu menjawab ${correctAnswersToInsert.length} soal dengan benar!`);
+            // req.flash('success', `Kamu menjawab ${correctAnswersToInsert.length} soal dengan benar!`);
 
-            res.redirect('/mindquest/student/subject');
+            // res.redirect('/mindquest/student/subject');
         } catch (error) {
             res.send(error);
         }

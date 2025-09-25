@@ -2,6 +2,7 @@ const { where } = require('sequelize')
 const { User, Profile } = require('../models')
 const bcrypt = require('bcryptjs')
 
+
 class AuthController {
     static async home(req, res) {
         try {
@@ -54,8 +55,12 @@ class AuthController {
                     model: Profile
                 }]
             })
-            
-            res.render("edu-profile", { user })
+
+            const profile = await Profile.findOne({
+                where: { UserId: req.session.userId }
+            });
+
+            res.render("edu-profile", { user, profile })
         } catch (error) {
             res.send(error)
         }
@@ -78,7 +83,10 @@ class AuthController {
 
     static async profileForm(req, res) {
         try {
-            res.render('profile')
+            const profile = await Profile.findOne({
+                where: { UserId: req.session.userId }
+            });
+            res.render('profile', { profile })
         } catch (error) {
             res.send(error)
         }
@@ -86,9 +94,10 @@ class AuthController {
 
     static async profile(req, res) {
         try {
-            const { alamat, bio, avatar, namaLengkap } = req.body
+            const { alamat, bio, namaLengkap } = req.body
             // console.log(req.body);
-            
+            const avatar = req.file ? '/uploads/' + req.file.filename : null;
+
             await Profile.create({
                 address: alamat,
                 bio,
@@ -102,7 +111,7 @@ class AuthController {
             res.redirect(`/mindquest/${role}`) //gimana caranya biar dinamis antara student dan educator
         } catch (error) {
             // console.log(error);
-            
+
             res.send(error)
         }
     }
@@ -117,7 +126,7 @@ class AuthController {
 
     static async login(req, res) {
         try {
-            const { username, email, password} = req.body
+            const { username, email, password } = req.body
             // const users = [{id: 1, email: email, username: username, password: bcrypt.hashSync(password, 8), role:'STUDENT'}] //data dummy
             const user = await User.findOne({
                 where: {
@@ -136,10 +145,10 @@ class AuthController {
                 req.session.userId = user.id
                 req.session.role = user.role
 
-                if(!profile){
+                if (!profile) {
                     res.redirect('/profile/add')
                 }
-                if(user.role ==='STUDENT') {
+                if (user.role === 'STUDENT') {
                     res.redirect(`/mindquest/student`)
 
                     // res.send('success login')
@@ -151,7 +160,7 @@ class AuthController {
             }
         } catch (error) {
             // console.log(error);
-            
+
             res.send(error)
         }
     }
