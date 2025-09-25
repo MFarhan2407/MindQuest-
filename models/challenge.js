@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Challenge.belongsTo(models.User, {foreignKey: "EducatorId"})
       Challenge.belongsTo(models.Subject)
     }
   }
@@ -20,7 +21,9 @@ module.exports = (sequelize, DataTypes) => {
     optionB: DataTypes.STRING,
     optionC: DataTypes.STRING,
     optionD: DataTypes.STRING,
-    correctAnswer: DataTypes.STRING
+    correctAnswer: DataTypes.STRING,
+    EducatorId: DataTypes.INTEGER,
+    SubjectId: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Challenge',

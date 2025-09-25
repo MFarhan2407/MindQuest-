@@ -43,7 +43,14 @@ class StuController {
 
     static async submitAnswer(req, res) {
         try {
+            // console.log(req.body.answers);
+
+            // const answers = req.body.answers; // sekarang sudah aman kebaca object
             console.log(req.body);
+            
+
+            // // console.log('StudentId:', StudentId);
+            // console.log('Answers:', answers);
             /*
             {
                 '46': 'D',
@@ -64,40 +71,40 @@ class StuController {
             }
             */
 
-            const StudentId = req.session.userId;
-            const { answers } = req.body;
+            // const StudentId = req.session.userId;
+            // // // const { answers } = req.body;
 
-            console.log('StudentId:', StudentId); // 3
-            console.log('Answers:', answers); //undefined
+            // // console.log('StudentId:', StudentId); // 3
+            // // console.log('Answers:', answers); //undefined
 
-            const challengeIds = Object.keys(answers)
+            // const challengeIds = Object.keys(answers)
 
-            const challenges = await Challenge.findAll({
-                where: {
-                    id: challengeIds
-                }
-            });
+            // const challenges = await Challenge.findAll({
+            //     where: {
+            //         id: challengeIds
+            //     }
+            // });
 
-            const correctAnswersToInsert = [];
+            // const correctAnswersToInsert = [];
 
-            challenges.forEach(challenge => {
-                const userAnswer = answers[challenge.id];
+            // challenges.forEach(challenge => {
+            //     const userAnswer = answers[challenge.id];
 
-                if (userAnswer === challenge.correctAnswer) {
-                    correctAnswersToInsert.push({
-                        StudentId,
-                        ChallengeId: challenge.id,
-                        selectedOption: userAnswer
-                    });
-                }
-            });
+            //     if (userAnswer === challenge.correctAnswer) {
+            //         correctAnswersToInsert.push({
+            //             StudentId,
+            //             ChallengeId: challenge.id,
+            //             selectedOption: userAnswer
+            //         });
+            //     }
+            // });
 
-            await Answer.bulkCreate(correctAnswersToInsert);
+            // await Answer.bulkCreate(correctAnswersToInsert);
 
 
-            req.flash('success', `Kamu menjawab ${correctAnswersToInsert.length} soal dengan benar!`);
+            // req.flash('success', `Kamu menjawab ${correctAnswersToInsert.length} soal dengan benar!`);
 
-            res.redirect('/mindquest/student/subject');
+            // res.redirect('/mindquest/student/subject');
         } catch (error) {
             res.send(error);
         }

@@ -1,16 +1,141 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+  <!-- Theme Made By www.w3schools.com - No Copyright -->
+  <title>Bootstrap Theme Simply Me</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <style>
+    body {
+      font: 20px Montserrat, sans-serif;
+      line-height: 1.8;
+      color: #f5f6f7;
+    }
+
+    p {
+      font-size: 16px;
+    }
+
+    .margin {
+      margin-bottom: 45px;
+    }
+
+    .bg-1 {
+      background-color: #1abc9c;
+      /* Green */
+      color: #ffffff;
+    }
+
+    .bg-2 {
+      background-color: #474e5d;
+      /* Dark Blue */
+      color: #ffffff;
+    }
+
+    .bg-3 {
+      background-color: #ffffff;
+      /* White */
+      color: #555555;
+    }
+
+    .bg-4 {
+      background-color: #2f2f2f;
+      /* Black Gray */
+      color: #fff;
+    }
+
+    .container-fluid {
+      padding-top: 70px;
+      padding-bottom: 70px;
+    }
+
+    .navbar {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      border: 0;
+      border-radius: 0;
+      margin-bottom: 0;
+      font-size: 12px;
+      letter-spacing: 5px;
+    }
+
+    .navbar-nav li a:hover {
+      color: #1abc9c !important;
+    }
+
+    .btn-green {
+      background-color: #1abc9c;
+      color: #2f2f2f;
+    }
+  </style>
 </head>
+
 <body>
-    <div>
-        Sudah punya akun? kalo sudah klik <a href="/auth/login">disini</a>
+
+  <nav class="navbar navbar-default">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="">Mindquest</a>
+      </div>
+      <div class="collapse navbar-collapse" id="myNavbar">
+        <ul class="nav navbar-nav navbar-right">
+          <li><a href="#">WELCOME</a></li>
+          <li><a href="#">BACK</a></li>
+          <li><a href="#">MY</a></li>
+          <li><a href="#">FRIENDS</a></li>
+        </ul>
+      </div>
     </div>
+  </nav>
+
+  <div class="container-fluid bg-1 text-center">
+    <h3 class="margin">Wanna to learn?</h3>
+    <img src="/images/cerdas.jpg" class="img-responsive img-circle margin" style="display:inline" alt="Bird" width="150" height="150">
+    
+      <h3><strong>AKU CERDAS! AKU BISA!</strong></h3>
+  </div>
+
+
+  <div class="container-fluid bg-2 text-center">
+    <h3 class="margin">MAU COBA? DAFTAR DULU YUKK</h3>
     <div>
-        Belum punya akun? kalo belum klik <a href="/auth/register">disini</a>
+      <a href="/auth/register" class="btn btn-green btn-lg">
+        <span>Daftar</span>
+      </a>
+    </div><br>
+    <p class="text-muted">ga usah malu malu daftar aja hehe</p>
+
+    <p>Kalau sudah punya akun langsung login aja ya gess. </p>
+    <a href="/auth/login" class="btn btn-default btn-lg">
+      <span>Login</span>
+    </a>
+  </div>
+
+
+  <div class="container-fluid bg-3 text-center">
+    <h3 class="margin">Mau tau tentang kami?</h3><br>
+    <div class="row">
+      <div class="container span-4">
+        <p>MindQuest adalah platform ujian dan kuis interaktif untuk murid SMA yang memberikan pengalaman belajar seperti sebuah petualangan. Setiap soal dianggap sebagai sebuah "quest" yang harus diselesaikan, lengkap dengan pertanyaan pilihan ganda dan hasil akhir berupa skor yang menunjukkan kemampuan murid. </p>
+      </div>
     </div>
+  </div>
+
+
+  <footer class="container-fluid bg-4 text-center">
+    <p>MindQuest Made By Radit & Farhan</p>
+  </footer>
+
 </body>
+
 </html>

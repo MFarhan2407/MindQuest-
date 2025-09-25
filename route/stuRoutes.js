@@ -7,5 +7,4 @@ route.get('/student/subject', StuController.showSubject)
 route.get('/student/subject/challenge/:SubjectId', StuController.showChallenge)
 route.post('/student/subject/challenge/:SubjectId', StuController.submitAnswer)
 
-
 module.exports = route
