@@ -6,6 +6,7 @@ const route = require('express').Router()
 const upload = require("../middlewares/upload")
 
 route.get("/profile", AuthController.showProfile)
+route.get("/profile/student", AuthController.showProfileStudent)
 
 route.get('/profile/add', AuthController.profileForm)
 
