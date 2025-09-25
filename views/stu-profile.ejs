@@ -4,53 +4,64 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Student Profile</title>
+  <title>Dashboard</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
   <style>
     body {
-      overflow-x: hidden;
+      background-color: #f4f6f9;
+      font-family: 'Montserrat', sans-serif;
     }
 
     .sidebar {
       min-height: 100vh;
+      background-color: #2f2f2f;
+      color: white;
     }
 
-    .sidebar {
-      min-height: 100vh;
-    }
 
-    .sidebar .nav-link {
-      font-weight: 500;
-      color: #ddd;
-    }
-
-    .sidebar .nav-link:hover {
+    .sidebar a {
       color: #fff;
-      background: rgba(255, 255, 255, 0.1);
+      text-decoration: none;
+      display: block;
+      padding: 12px 20px;
+      transition: 0.3s;
     }
 
-    .sidebar .nav-link.active {
+    .sidebar a:hover {
+      /* background: rgba(255, 255, 255, 0.1);
+       */
+       color: #1abc9c;
+    }
+
+    .card-outline {
+      border: 2px solid;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .card-outline:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-subject {
+      border-color: #1abc9c;
+    }
+
+    .card-challenge {
+      border-color: #474e5d;
+    }
+
+    .card-student {
+      border-color: #0d6efd;
+    }
+
+    .table thead {
+      background-color: #474e5d;
       color: #fff;
-      background-color: #0d6efd;
-    }
-
-    .profile-header {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-
-    .profile-header img {
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-      border-radius: 50%;
-      border: 3px solid #0d6efd;
     }
   </style>
-
 </head>
 
 <body class="bg-light">
