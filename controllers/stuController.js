@@ -1,4 +1,4 @@
-const { User, Profile, Subject, Challenge } = require('../models')
+const { User, Profile, Subject, Challenge, Answer } = require('../models')
 
 class StuController {
     static async dashboard(req, res) {
@@ -32,6 +32,7 @@ class StuController {
             const subject = await Subject.findByPk(SubjectId, {
                 include: [Challenge]
             })
+            // res.send(subject)
             // const challenges = await Challenge.findAll();
             res.render('question-stu', { subject });
         } catch (error) {
@@ -39,13 +40,69 @@ class StuController {
         }
     }
 
+
     static async submitAnswer(req, res) {
         try {
-            const SubjectId = nantiganti
+            console.log(req.body);
+            /*
+            {
+                '46': 'D',
+                '47': 'A',
+                '48': 'A',
+                '49': 'A',
+                '50': 'A',
+                '51': 'A',
+                '52': 'A',
+                '53': 'A',
+                '54': 'A',
+                '55': 'A',
+                '56': 'A',
+                '57': 'B',
+                '58': 'A',
+                '59': 'A',
+                '60': 'A'
+            }
+            */
+
+            const StudentId = req.session.userId;
+            const { answers } = req.body;
+
+            console.log('StudentId:', StudentId); // 3
+            console.log('Answers:', answers); //undefined
+
+            const challengeIds = Object.keys(answers)
+
+            const challenges = await Challenge.findAll({
+                where: {
+                    id: challengeIds
+                }
+            });
+
+            const correctAnswersToInsert = [];
+
+            challenges.forEach(challenge => {
+                const userAnswer = answers[challenge.id];
+
+                if (userAnswer === challenge.correctAnswer) {
+                    correctAnswersToInsert.push({
+                        StudentId,
+                        ChallengeId: challenge.id,
+                        selectedOption: userAnswer
+                    });
+                }
+            });
+
+            await Answer.bulkCreate(correctAnswersToInsert);
+
+
+            req.flash('success', `Kamu menjawab ${correctAnswersToInsert.length} soal dengan benar!`);
+
+            res.redirect('/mindquest/student/subject');
         } catch (error) {
-            res.send(error)
+            res.send(error);
         }
     }
+
 }
 
 module.exports = StuController
