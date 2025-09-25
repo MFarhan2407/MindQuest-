@@ -7,8 +7,11 @@ class StuController {
             const user = await User.findOne({
                 where: { id }
             })
+
+            // const answer = await Answer.findAll()
             // res.send(user)
             // console.log(user);
+            // const correctAnswer = answer.selectedOption.length
 
             // res.send('masuk')
             res.render("student-dashboard", { user })
@@ -49,7 +52,6 @@ class StuController {
 
             const totalCorrect = correctAnswers.length;
 
-
             res.render('score-stu', { scoreBySubject, totalCorrect, correctAnswers })
         } catch (error) {
             res.send(error)
@@ -62,8 +64,7 @@ class StuController {
             const subject = await Subject.findByPk(SubjectId, {
                 include: [Challenge]
             })
-            // res.send(subject)
-            // const challenges = await Challenge.findAll();
+            
             res.render('question-stu', { subject });
         } catch (error) {
             res.send(error)
@@ -86,7 +87,7 @@ class StuController {
 
             const challenges = subject.Challenges
 
-            // const correctAnswersToInsert = [];
+            const correctAnswersToInsert = [];
 
             answers.forEach((userAnswer, index) => {
                 if (challenges[index]) {
@@ -106,14 +107,19 @@ class StuController {
                 await Answer.bulkCreate(correctAnswersToInsert);
             }
 
-            // req.flash('success', `Kamu menjawab ${correctAnswersToInsert.length} soal dengan benar!`);
-
-            // res.redirect('/mindquest/student/subject');
+            res.redirect('/mindquest/student/subject');
         } catch (error) {
             res.send(error);
         }
     }
 
+    static async showRanking (req, res){
+        try {
+            res.render('ranking-stu')
+        } catch (error) {
+            res.send(error)
+        }
+    }
 }
 
 module.exports = StuController

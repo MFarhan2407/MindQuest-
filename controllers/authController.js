@@ -16,11 +16,11 @@ class AuthController {
         try {
             let errors // undefined
             console.log(req.query);
-            
+
             if (req.query.errors) { // masih dalam bentuk string
                 errors = req.query.errors.split(",") // Array
             }
-            res.render('register', {errors})
+            res.render('register', { errors })
             // res.send("halo")
         } catch (error) {
             res.send(error)
@@ -39,7 +39,7 @@ class AuthController {
             })
             res.redirect('/auth/login')
         } catch (error) {
-            if(error.name === 'SequelizeValidationError'){
+            if (error.name === 'SequelizeValidationError') {
                 const errors = error.errors.map((el) => el.message)
                 res.redirect(`/auth/register?errors=${errors}`)
             }
@@ -65,7 +65,7 @@ class AuthController {
             res.send(error)
         }
     }
-    
+
     static async showProfileStudent(req, res) {
         try {
             // console.log(req.session);
@@ -74,7 +74,7 @@ class AuthController {
                     model: Profile
                 }]
             })
-            
+
             res.render("stu-profile", { user })
         } catch (error) {
             res.send(error)
@@ -146,17 +146,17 @@ class AuthController {
                 req.session.role = user.role
 
                 if (!profile) {
-                    res.redirect('/profile/add')
+                    return res.redirect('/profile/add')
                 }
                 if (user.role === 'STUDENT') {
-                    res.redirect(`/mindquest/student`)
+                    return res.redirect(`/mindquest/student`)
 
                     // res.send('success login')
                 } else {
-                    res.redirect('/mindquest/educator')
+                    return res.redirect('/mindquest/educator')
                 }
             } else {
-                res.status(401).send('Invalid credentials');
+                return res.status(401).send('Invalid credentials');
             }
         } catch (error) {
             // console.log(error);
@@ -165,7 +165,16 @@ class AuthController {
         }
     }
 
+    static async logout(req, res) {
+        try {
+            req.session.destroy(() => {
+                res.redirect('/auth')
+            });
 
+        } catch (error) {
+            res.send(error)
+        }
+    }
 }
 
 module.exports = AuthController

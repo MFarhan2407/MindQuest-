@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Ranking Murid</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  
+  <style>
+    body {
+      background-color: #f4f6f9;
+      font-family: 'Montserrat', sans-serif;
+    }
+
+    .sidebar {
+      min-height: 100vh;
+      background-color: #2f2f2f;
+      color: white;
+    }
+
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 12px 20px;
+      transition: 0.3s;
+    }
+
+    .sidebar a:hover {
+      color: #1abc9c;
+    }
+
+    .card-outline {
+      border: 2px solid;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
+
+    .card-outline:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-subject {
+      border-color: #1abc9c;
+    }
+
+    .card-challenge {
+      border-color: #474e5d;
+    }
+
+    .card-student {
+      border-color: #0d6efd;
+    }
+
+    .table thead {
+      background-color: #474e5d;
+      color: #fff;
+    }
+
+    h1 {
+      margin-bottom: 30px;
+      color: #333;
+    }
+  </style>
+</head>
+<body>
+
+  <%- include('partials/nav-bar-student.ejs') %>
+
+  <div class="container-fluid">
+    <div class="row">
+      
+      <%- include('partials/side-bar-student.ejs') %>
+
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+        <h1 class="text-center">🏆 Ranking Murid</h1>
+
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th>Peringkat</th>
+              <th>Nama</th>
+              <th>Skor</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% 
+              const students = [
+                { name: 'elestial', score: 38 },
+                { name: 'nevin', score: 30 },
+                { name: 'odo', score: 29 },
+                { name: 'muthia', score: 28 },
+                { name: 'vania', score: 26 },
+                { name: 'gemma', score: 24 },
+                { name: 'chumkevin', score: 20 },
+                { name: 'erpan', score: 18 },
+                { name: 'zenmatho', score: 17 },
+                { name: 'beaconcream', score: 15 }
+              ];
+
+              students.sort((a, b) => b.score - a.score);
+
+              students.forEach((student, index) => { 
+            %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= student.name %></td>
+                <td><%= student.score %></td>
+              </tr>
+            <% }) %>
+          </tbody>
+        </table>
+
+        <div class="text-center mt-4">
+          <a href="/mindquest/student/" class="btn btn-primary">
+            ⬅️ Kembali ke Dashboard
+          </a>
+        </div>
+      </main>
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
