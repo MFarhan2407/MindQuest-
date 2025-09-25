@@ -1,13 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Educator Profile</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
   <style>
     body {
       background-color: #f4f6f9;
@@ -15,40 +13,62 @@
     }
 
     .sidebar {
+      background-color: #343a40;
       min-height: 100vh;
+      padding-top: 1rem;
     }
-
     .sidebar .nav-link {
+      color: #bbb;
       font-weight: 500;
-      color: #ddd;
-      transition: 0.2s;
+      margin-bottom: 8px;
+      border-radius: 6px;
+      padding: 10px 15px;
     }
-
-    .sidebar .nav-link:hover {
-      color: #1abc9c;
-    }
-
     .sidebar .nav-link.active {
       color: #1abc9c;
+    }
+
+    .profile-card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 30px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
     }
 
     .profile-header {
       display: flex;
       align-items: center;
-      gap: 1rem;
+      gap: 20px;
     }
-
     .profile-header img {
       width: 100px;
       height: 100px;
       object-fit: cover;
       border-radius: 50%;
-      border: 3px solid #0d6efd;
+      border: 4px solid #1abc9c;
+    }
+
+    .profile-header h3 {
+      color: #1abc9c;
+      font-weight: 700;
+    }
+
+    .btn-theme {
+      background-color: #1abc9c;
+      color: #f4f6f9;
+      border: none;
+    }
+    .btn-theme:hover {
+      background-color: #16a085;
+      color: #fff;
+    }
+
+    dl dt {
+      font-weight: 600;
     }
   </style>
 </head>
-
-<body class="bg-light">
+<body>
   <%- include("partials/nav-bar") %>
 
   <div class="container-fluid">
@@ -58,24 +78,21 @@
       </nav>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
-        <h1 class="h2 mb-4">Educator Profile</h1>
+        <h1 class="h2 mb-4 text-uppercase" style="color:#1abc9c;">Educator Profile</h1>
 
-        <div class="card shadow-sm p-4">
-          <div class="profile-header mb-3">
-            <img src="<%= profile && profile.avatar ? profile.avatar : '/images/default-avatar.jpg' %>" alt="Avatar" class="rounded-circle border border-3 border-primary">
-
+        <div class="profile-card">
+          <div class="profile-header mb-4">
+            <img src="<%= profile && profile.avatar ? profile.avatar : '/images/default-avatar.jpg' %>" alt="Avatar">
             <div>
-              <h3 class="mb-0"><%= user.username %></h3>
-              <p class="text-muted mb-0">Role: <%= user.role %></p>
+              <h3><%= user.username %></h3>
+              <p class="text-muted mb-1">Role: <%= user.role %></p>
+              <p class="text-muted mb-0"><%= user.email %></p>
             </div>
           </div>
 
           <hr>
 
-          <dl class="row mb-0">
-            <dt class="col-sm-3">Email</dt>
-            <dd class="col-sm-9"><%= user.email %></dd>
-
+          <dl class="row mb-4">
             <dt class="col-sm-3">Address</dt>
             <dd class="col-sm-9"><%= user.Profile?.address || '-' %></dd>
 
@@ -83,11 +100,9 @@
             <dd class="col-sm-9"><%= user.Profile?.bio || 'No bio provided.' %></dd>
           </dl>
 
-          <div class="mt-4">
-            <a href="/profile/edit" class="btn btn-primary">
-              <i class="bi bi-pencil-square"></i> Edit Profile
-            </a>
-          </div>
+          <a href="/mindquest/educator/profile/<%= user.id %>/edit" class="btn btn-theme">
+            <i class="bi bi-pencil-square"></i> Edit Profile
+          </a>
         </div>
       </main>
     </div>
@@ -95,5 +110,4 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
-
 </html>
