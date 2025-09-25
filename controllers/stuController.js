@@ -64,7 +64,7 @@ class StuController {
             const subject = await Subject.findByPk(SubjectId, {
                 include: [Challenge]
             })
-            
+
             res.render('question-stu', { subject });
         } catch (error) {
             res.send(error)
@@ -113,9 +113,35 @@ class StuController {
         }
     }
 
-    static async showRanking (req, res){
+    static async showRanking(req, res) {
         try {
             res.render('ranking-stu')
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
+    static async showEditPost(req, res) {
+        try {
+            const { id } = req.params
+            const userId = req.session.userId
+
+            const user = await User.findOne({
+                include: {
+                    model: Profile,
+                    where: {
+                        id: id
+                    }
+                }
+            })
+
+            const profile = await Profile.findOne({
+                where: {
+                    UserId: userId
+                }
+            })
+
+            res.render('')
         } catch (error) {
             res.send(error)
         }

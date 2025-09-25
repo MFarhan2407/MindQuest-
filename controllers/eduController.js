@@ -157,13 +157,6 @@ class eduController {
                     bio,
                     ...(avatarPath && { avatar: avatarPath })
                 });
-            } else {
-                await Profile.create({
-                    UserId: userId,
-                    address,
-                    bio,
-                    avatar: avatarPath
-                });
             }
 
             res.redirect('/mindquest/educator/profile');
