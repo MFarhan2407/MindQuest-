@@ -1,4 +1,6 @@
 const { User, Profile, Challenge } = require('../models')
+
+
 class eduController {
     static async dashBoard(req, res) {
         try {

@@ -66,7 +66,8 @@
 
         <div class="card shadow-sm p-4">
           <div class="profile-header mb-3">
-            <img src="" alt="">
+            <img src="<%= profile.avatar ? profile.avatar : '/images/default-avatar.jpg' %>" alt="Avatar" width="150">
+
             <div>
               <h3 class="mb-0"><%= user.username %></h3>
               <p class="text-muted mb-0">Role: <%= user.role %></p>

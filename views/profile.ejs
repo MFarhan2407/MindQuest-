@@ -1,29 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profile</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Profile</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Montserrat', sans-serif;
+      background-color: #474e5d;
+      color: #f5f6f7;
+    }
+
+    .btn-green {
+      background-color: #1abc9c;
+      color: #2f2f2f;
+    }
+
+    .btn-green:hover {
+      background-color: #16a085;
+      color: #fff;
+    }
+
+    .navbar {
+      background-color: #fff;
+    }
+
+    .navbar-brand {
+      color: #1abc9c !important;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
+
+    .navbar-nav .nav-link {
+      color: #2f2f2f !important;
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .navbar-nav .nav-link:hover {
+      color: #1abc9c !important;
+    }
+  </style>
 </head>
+
 <body>
-    <form action="/profile/add" method="post">
-        <div>
-            <label for="">Avatar</label>
-            <input type="text" name="avatar">
-        </div>
-        <div>
-            <label for="">Nama Lengkap</label>
-            <input type="text" name="namaLengkap">
-        </div>
-        <div>
-            <label for="">Alamat</label>
-            <input type="text" name="alamat">
-        </div>
-        <div>
-            <label for="">Bio</label>
-            <input type="text" name="bio">
-        </div>
-        <button>Submit</button>
-    </form>
+
+  <nav class="navbar navbar-expand-lg shadow-sm">
+    <div class="container">
+      <a class="navbar-brand" href="/">Mindquest</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#">WELCOME</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">BACK</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">MY</a></li>
+          <li class="nav-item"><a class="nav-link" href="#">FRIENDS</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container vh-100 d-flex justify-content-center align-items-center">
+    <div class="card bg-secondary text-light shadow-lg" style="max-width: 450px; width:100%; border-radius: 15px;">
+      <div class="card-body p-4" style="background-color: #474e5d;">
+        <h3 class="text-center mb-4" style="color: #1abc9c;">Lengkapi Profile</h3>
+
+        <form action="/profile/add" method="post" enctype="multipart/form-data">
+          <div class="mb-3">
+            <label for="avatar" class="form-label">Avatar (URL)</label>
+            <% if (profile && profile.avatar) { %>
+            <img src="<%= profile.avatar %>" class="card-img-top" alt="Avatar User">
+            <% } else { %>
+            <img src="/default-avatar.jpg" class="card-img-top" alt="Default Avatar">
+            <% } %>
+
+            <input type="file" id="avatar" name="avatar" class="form-control" placeholder="Link foto profil" accept="/*">
+          </div>
+
+          <div class="mb-3">
+            <label for="namaLengkap" class="form-label">Nama Lengkap</label>
+            <input type="text" id="namaLengkap" name="namaLengkap" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label for="alamat" class="form-label">Alamat</label>
+            <input type="text" id="alamat" name="alamat" class="form-control">
+          </div>
+
+          <div class="mb-3">
+            <label for="bio" class="form-label">Bio</label>
+            <textarea id="bio" name="bio" class="form-control" rows="3" placeholder="Ceritakan sedikit tentang dirimu..."></textarea>
+          </div>
+
+          <div class="d-grid mt-4">
+            <button type="submit" class="btn btn-green" style="color: #f5f6f7;">Simpan Profile</button>
+          </div>
+        </form>
+
+        <p class="text-center mt-3 mb-0">
+          <a href="/" class="text-white text-decoration-underline">Kembali ke Home</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>
