@@ -9,27 +9,11 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
   <style>
     body {
-      overflow-x: hidden;
+      background-color: #f4f6f9;
+      font-family: 'Montserrat', sans-serif;
     }
 
-    .sidebar {
-      min-height: 100vh;
-    }
 
-    .sidebar .nav-link {
-      font-weight: 500;
-      color: #ddd;
-    }
-
-    .sidebar .nav-link:hover {
-      color: #fff;
-      background: rgba(255, 255, 255, 0.1);
-    }
-
-    .sidebar .nav-link.active {
-      color: #fff;
-      background-color: #0d6efd;
-    }
   </style>
 
 </head>
@@ -42,7 +26,9 @@
   <div class="container-fluid">
     <div class="row">
 
-      <%- include('partials/side-bar.ejs') %>
+      <nav class="col-md-2 col-lg-2 sidebar">
+        <%- include('partials/side-bar.ejs') %>
+      </nav>
 
       <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
         <h1 class="h1">Educator Area</h1>
@@ -52,44 +38,44 @@
 
         </div>
 
-        
 
-        
 
-          <ul class="nav nav-tabs" id="eduTab" role="tablist">
-            <li class="nav-item" role="presentation">
-              <button class="nav-link active" id="create-tab" data-bs-toggle="tab" data-bs-target="#create" type="button" role="tab">Buat Soal</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="manage-tab" data-bs-toggle="tab" data-bs-target="#manage" type="button" role="tab">Kelola Soal</button>
-            </li>
-            <li class="nav-item" role="presentation">
-              <button class="nav-link" id="score-tab" data-bs-toggle="tab" data-bs-target="#score" type="button" role="tab">Score Murid</button>
-            </li>
-          </ul>
 
-          <div class="tab-content mt-3" id="eduTabContent">
 
-            <div class="tab-pane fade show active" id="create" role="tabpanel">
-              <h3>Buat Soal Baru</h3>
-              <form action="/mindquest/educator/question/create" method="POST" class="mt-3">
-                <div class="mb-3">
-                  <label for="questionText" class="form-label">Pertanyaan</label>
-                  <textarea class="form-control" id="questionText" name="question" required></textarea>
-                </div>
-                <div class="mb-3">
-                  <label for="answer" class="form-label">Jawaban Benar</label>
-                  <input type="text" class="form-control" id="answer" name="correctAnswer" required>
-                </div>
-                <div class="mb-3">
-                  <label for="choices" class="form-label">Pilihan (pisahkan dengan koma)</label>
-                  <input type="text" class="form-control" id="choices" name="choices" placeholder="A,B,C,D">
-                </div>
-                <button type="submit" class="btn btn-success">Simpan Soal</button>
-              </form>
-            </div>
+        <ul class="nav nav-tabs" id="eduTab" role="tablist">
+          <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="create-tab" data-bs-toggle="tab" data-bs-target="#create" type="button" role="tab">Buat Soal</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="manage-tab" data-bs-toggle="tab" data-bs-target="#manage" type="button" role="tab">Kelola Soal</button>
+          </li>
+          <li class="nav-item" role="presentation">
+            <button class="nav-link" id="score-tab" data-bs-toggle="tab" data-bs-target="#score" type="button" role="tab">Score Murid</button>
+          </li>
+        </ul>
 
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <div class="tab-content mt-3" id="eduTabContent">
+
+          <div class="tab-pane fade show active" id="create" role="tabpanel">
+            <h3>Buat Soal Baru</h3>
+            <form action="/mindquest/educator/question/create" method="POST" class="mt-3">
+              <div class="mb-3">
+                <label for="questionText" class="form-label">Pertanyaan</label>
+                <textarea class="form-control" id="questionText" name="question" required></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="answer" class="form-label">Jawaban Benar</label>
+                <input type="text" class="form-control" id="answer" name="correctAnswer" required>
+              </div>
+              <div class="mb-3">
+                <label for="choices" class="form-label">Pilihan (pisahkan dengan koma)</label>
+                <input type="text" class="form-control" id="choices" name="choices" placeholder="A,B,C,D">
+              </div>
+              <button type="submit" class="btn btn-success">Simpan Soal</button>
+            </form>
+          </div>
+
+          <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

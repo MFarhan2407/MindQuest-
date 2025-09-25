@@ -43,12 +43,22 @@
     .navbar-nav .nav-link:hover {
       color: #1abc9c !important;
     }
+
+    .avatar-preview {
+      display: block;
+      margin: 0 auto 15px;
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 3px solid #1abc9c;
+    }
   </style>
 </head>
 
 <body>
 
-  <nav class="navbar navbar-expand-lg shadow-sm">
+  <nav class="navbar navbar-expand-lg shadow-sm navbar-light">
     <div class="container">
       <a class="navbar-brand" href="/">Mindquest</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -71,30 +81,30 @@
         <h3 class="text-center mb-4" style="color: #1abc9c;">Lengkapi Profile</h3>
 
         <form action="/profile/add" method="post" enctype="multipart/form-data">
-          <div class="mb-3">
-            <label for="avatar" class="form-label">Avatar (URL)</label>
+          <div class="mb-3 text-center">
             <% if (profile && profile.avatar) { %>
-            <img src="<%= profile.avatar %>" class="card-img-top" alt="Avatar User">
+              <img src="<%= profile.avatar %>" class="avatar-preview" alt="Avatar User">
             <% } else { %>
-            <img src="/default-avatar.jpg" class="card-img-top" alt="Default Avatar">
+              <img src="/default-avatar.jpg" class="avatar-preview" alt="Default Avatar">
             <% } %>
-
-            <input type="file" id="avatar" name="avatar" class="form-control" placeholder="Link foto profil" accept="/*">
+            <input type="file" id="avatar" name="avatar" class="form-control mt-2" accept="image/*">
           </div>
 
           <div class="mb-3">
             <label for="namaLengkap" class="form-label">Nama Lengkap</label>
-            <input type="text" id="namaLengkap" name="namaLengkap" class="form-control">
+            <input type="text" id="namaLengkap" name="namaLengkap" class="form-control" 
+              value="<%= profile ? profile.namaLengkap : '' %>">
           </div>
 
           <div class="mb-3">
             <label for="alamat" class="form-label">Alamat</label>
-            <input type="text" id="alamat" name="alamat" class="form-control">
+            <input type="text" id="alamat" name="alamat" class="form-control"
+              value="<%= profile ? profile.alamat : '' %>">
           </div>
 
           <div class="mb-3">
             <label for="bio" class="form-label">Bio</label>
-            <textarea id="bio" name="bio" class="form-control" rows="3" placeholder="Ceritakan sedikit tentang dirimu..."></textarea>
+            <textarea id="bio" name="bio" class="form-control" rows="3" placeholder="Ceritakan sedikit tentang dirimu..."><%= profile ? profile.bio : '' %></textarea>
           </div>
 
           <div class="d-grid mt-4">

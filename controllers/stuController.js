@@ -41,7 +41,30 @@ class StuController {
 
     static async submitAnswer(req, res) {
         try {
-            const SubjectId = nantiganti
+            // console.log(req.body);
+            console.log(req.body.split(":"));
+            
+
+            //             {
+            //   '1': 'C',
+            //   '2': 'A',
+            //   '3': 'C',
+            //   '4': 'C',
+            //   '5': 'D',
+            //   '6': 'A',
+            //   '7': 'B',
+            //   '8': 'A',
+            //   '9': 'A',
+            //   '10': 'A',
+            //   '11': 'B',
+            //   '12': 'D',
+            //   '13': 'C',
+            //   '14': 'C',
+            //   '15': 'D'
+            // }
+
+            res.redirect("/mindquest/student/subject")
+
         } catch (error) {
             res.send(error)
         }
