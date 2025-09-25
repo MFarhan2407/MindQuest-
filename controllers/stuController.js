@@ -26,6 +26,36 @@ class StuController {
         }
     }
 
+    static async showScore(req, res) {
+        try {
+            const StudentId = req.session.userId
+
+            const correctAnswers = await Answer.findAll({
+                where: { StudentId },
+                include: [{
+                    model: Challenge,
+                    include: [Subject]
+                }]
+            });
+
+            const scoreBySubject = {};
+            correctAnswers.forEach(answer => {
+                const subjectTitle = answer.Challenge.Subject.title;
+                if (!scoreBySubject[subjectTitle]) {
+                    scoreBySubject[subjectTitle] = 0;
+                }
+                scoreBySubject[subjectTitle]++;
+            });
+
+            const totalCorrect = correctAnswers.length;
+
+
+            res.render('score-stu', { scoreBySubject, totalCorrect, correctAnswers })
+        } catch (error) {
+            res.send(error)
+        }
+    }
+
     static async showChallenge(req, res) {
         try {
             const { SubjectId } = req.params
@@ -43,57 +73,38 @@ class StuController {
 
     static async submitAnswer(req, res) {
         try {
-            console.log(req.body);
-            /*
-            {
-                '46': 'D',
-                '47': 'A',
-                '48': 'A',
-                '49': 'A',
-                '50': 'A',
-                '51': 'A',
-                '52': 'A',
-                '53': 'A',
-                '54': 'A',
-                '55': 'A',
-                '56': 'A',
-                '57': 'B',
-                '58': 'A',
-                '59': 'A',
-                '60': 'A'
-            }
-            */
-
             const StudentId = req.session.userId;
             const { answers } = req.body;
+            const { SubjectId } = req.params;
 
-            console.log('StudentId:', StudentId); // 3
-            console.log('Answers:', answers); //undefined
+            const subject = await Subject.findByPk(SubjectId, {
+                include: [{
+                    model: Challenge,
+                    order: [['id', 'ASC']]
+                }]
+            })
 
-            const challengeIds = Object.keys(answers)
-
-            const challenges = await Challenge.findAll({
-                where: {
-                    id: challengeIds
-                }
-            });
+            const challenges = subject.Challenges
 
             const correctAnswersToInsert = [];
 
-            challenges.forEach(challenge => {
-                const userAnswer = answers[challenge.id];
+            answers.forEach((userAnswer, index) => {
+                if (challenges[index]) {
+                    const challenge = challenges[index];
 
-                if (userAnswer === challenge.correctAnswer) {
-                    correctAnswersToInsert.push({
-                        StudentId,
-                        ChallengeId: challenge.id,
-                        selectedOption: userAnswer
-                    });
+                    if (userAnswer === challenge.correctAnswer) {
+                        correctAnswersToInsert.push({
+                            StudentId,
+                            ChallengeId: challenge.id,
+                            selectedOption: userAnswer
+                        });
+                    }
                 }
             });
 
-            await Answer.bulkCreate(correctAnswersToInsert);
-
+            if (correctAnswersToInsert.length > 0) {
+                await Answer.bulkCreate(correctAnswersToInsert);
+            }
 
             req.flash('success', `Kamu menjawab ${correctAnswersToInsert.length} soal dengan benar!`);
 
