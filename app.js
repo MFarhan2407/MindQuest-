@@ -27,6 +27,9 @@ app.use(session({
     saveUninitialized: false
 }))
 
+app.use('/uploads', express.static('uploads'))
+app.use('/images', express.static('public/images'))
+
 app.use(flash())
 
 app.use(route)

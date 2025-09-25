@@ -83,23 +83,21 @@
         <form action="/profile/add" method="post" enctype="multipart/form-data">
           <div class="mb-3 text-center">
             <% if (profile && profile.avatar) { %>
-              <img src="<%= profile.avatar %>" class="avatar-preview" alt="Avatar User">
+            <img src="/uploads/<%= profile.avatar %>" class="avatar-preview" alt="Avatar User" onerror="this.src='/images/default-avatar.jpg'">
             <% } else { %>
-              <img src="/default-avatar.jpg" class="avatar-preview" alt="Default Avatar">
+            <img src="/images/default-avatar.jpg" class="avatar-preview" alt="Default Avatar">
             <% } %>
             <input type="file" id="avatar" name="avatar" class="form-control mt-2" accept="image/*">
           </div>
 
           <div class="mb-3">
             <label for="namaLengkap" class="form-label">Nama Lengkap</label>
-            <input type="text" id="namaLengkap" name="namaLengkap" class="form-control" 
-              value="<%= profile ? profile.namaLengkap : '' %>">
+            <input type="text" id="namaLengkap" name="namaLengkap" class="form-control" value="<%= profile ? profile.namaLengkap : '' %>">
           </div>
 
           <div class="mb-3">
             <label for="alamat" class="form-label">Alamat</label>
-            <input type="text" id="alamat" name="alamat" class="form-control"
-              value="<%= profile ? profile.alamat : '' %>">
+            <input type="text" id="alamat" name="alamat" class="form-control" value="<%= profile ? profile.alamat : '' %>">
           </div>
 
           <div class="mb-3">
