@@ -2,321 +2,317 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-    <style>
-        body {
-            background-color: #f4f6f9;
-            font-family: 'Montserrat', sans-serif;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f6f9;
+      font-family: 'Montserrat', sans-serif;
+    }
 
-        .sidebar {
-            min-height: 100vh;
-            background-color: #2f2f2f;
-            color: white;
-        }
+    .sidebar {
+      min-height: 100vh;
+      background-color: #2f2f2f;
+      color: white;
+    }
 
-        .sidebar a {
-            color: #fff;
-            text-decoration: none;
-            display: block;
-            padding: 12px 20px;
-            transition: 0.3s;
-        }
+    .sidebar a {
+      color: #fff;
+      text-decoration: none;
+      display: block;
+      padding: 12px 20px;
+      transition: 0.3s;
+    }
 
-        .sidebar a:hover {
-            color: #1abc9c;
-        }
+    .sidebar a:hover {
+      color: #1abc9c;
+    }
 
-        .card-outline {
-            border: 2px solid;
-            border-radius: 12px;
-            transition: 0.3s;
-        }
+    .card-outline {
+      border: 2px solid;
+      border-radius: 12px;
+      transition: 0.3s;
+    }
 
-        .card-outline:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-        }
+    .card-outline:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+    }
 
-        .card-subject {
-            border-color: #1abc9c;
-        }
+    .card-subject {
+      border-color: #1abc9c;
+    }
 
-        .card-challenge {
-            border-color: #474e5d;
-        }
+    .card-challenge {
+      border-color: #474e5d;
+    }
 
-        .card-student {
-            border-color: #0d6efd;
-        }
+    .card-student {
+      border-color: #0d6efd;
+    }
 
-        .table thead {
-            background-color: #474e5d;
-            color: #fff;
-        }
+    .table thead {
+      background-color: #474e5d;
+      color: #fff;
+    }
 
-        /* NEW STYLES FOR ENHANCEMENTS */
-        .stats-card {
-            border-radius: 15px;
-            transition: all 0.3s;
-            border: none;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
+    /* NEW STYLES FOR ENHANCEMENTS */
+    .stats-card {
+      border-radius: 15px;
+      transition: all 0.3s;
+      border: none;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
 
-        .stats-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-        }
+    .stats-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    }
 
-        .streak-fire {
-            color: #ff6b6b;
-            animation: pulse 2s infinite;
-        }
+    .streak-fire {
+      color: #ff6b6b;
+      animation: pulse 2s infinite;
+    }
 
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
-            }
+    @keyframes pulse {
+      0% {
+        transform: scale(1);
+      }
 
-            50% {
-                transform: scale(1.1);
-            }
+      50% {
+        transform: scale(1.1);
+      }
 
-            100% {
-                transform: scale(1);
-            }
-        }
+      100% {
+        transform: scale(1);
+      }
+    }
 
-        .activity-item {
-            border-left: 4px solid #dee2e6;
-            transition: all 0.3s;
-            border-radius: 8px;
-        }
+    .activity-item {
+      border-left: 4px solid #dee2e6;
+      transition: all 0.3s;
+      border-radius: 8px;
+    }
 
-        .activity-item:hover {
-            border-left-color: #0d6efd;
-            background-color: #f8f9fa;
-        }
+    .activity-item:hover {
+      border-left-color: #0d6efd;
+      background-color: #f8f9fa;
+    }
 
-        .status-excellent {
-            border-left-color: #28a745 !important;
-        }
+    .status-excellent {
+      border-left-color: #28a745 !important;
+    }
 
-        .status-good {
-            border-left-color: #ffc107 !important;
-        }
+    .status-good {
+      border-left-color: #ffc107 !important;
+    }
 
-        .status-needs_improvement {
-            border-left-color: #dc3545 !important;
-        }
-    </style>
+    .status-needs_improvement {
+      border-left-color: #dc3545 !important;
+    }
+  </style>
 </head>
 
 <body class="bg-light">
 
-    <%- include('partials/nav-bar-student.ejs') %>
+  <%- include('partials/nav-bar-student.ejs') %>
 
-        <div class="container-fluid">
-            <div class="row">
+  <div class="container-fluid">
+    <div class="row">
 
-                <%- include('partials/side-bar-student.ejs') %>
+      <%- include('partials/side-bar-student.ejs') %>
 
-                    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
+      <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 py-4">
 
-                        <!-- STREAK SECTION + Original Welcome -->
-                        <div class="d-flex justify-content-between align-items-center mb-4">
-                            <div>
-                                <h1 class="h2">Welcome <%= user.username %>!</h1>
-                                <p class="text-muted">Role: <%= user.role %>
-                                </p>
-                            </div>
-                            <div class="text-end">
-                                <div class="d-flex align-items-center">
-                                    <span class="streak-fire fs-2">🔥</span>
-                                    <div class="ms-2">
-                                        <div class="fw-bold fs-4">7 days</div>
-                                        <small class="text-muted">Learning streak</small>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- STATS CARDS -->
-                        <div class="row mb-4">
-                            <div class="col-md-3 mb-3">
-                                <div class="card stats-card bg-primary text-white">
-                                    <div class="card-body text-center">
-                                        <i class="bi bi-list-check fs-1 mb-2"></i>
-                                        <h3 class="mb-1">45</h3>
-                                        <p class="mb-0">Quizzes Taken</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="card stats-card bg-success text-white">
-                                    <div class="card-body text-center">
-                                        <i class="bi bi-check-circle fs-1 mb-2"></i>
-                                        <h3 class="mb-1">38</h3>
-                                        <p class="mb-0">Correct Answers</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="card stats-card bg-warning text-white">
-                                    <div class="card-body text-center">
-                                        <i class="bi bi-graph-up fs-1 mb-2"></i>
-                                        <h3 class="mb-1">87%</h3>
-                                        <p class="mb-0">Average Score</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-3 mb-3">
-                                <div class="card stats-card bg-info text-white">
-                                    <div class="card-body text-center">
-                                        <i class="bi bi-trophy fs-1 mb-2"></i>
-                                        <h3 class="mb-1">Math</h3>
-                                        <p class="mb-0">Best Subject</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- MAIN CONTENT ROW -->
-                        <div class="row">
-
-                            <!-- RECENT ACTIVITY -->
-                            <div class="col-md-8 mb-4">
-                                <div class="card">
-                                    <div class="card-header bg-white border-bottom">
-                                        <h5 class="mb-0">
-                                            <i class="bi bi-clock-history me-2"></i>Recent Activity
-                                        </h5>
-                                    </div>
-                                    <div class="card-body">
-
-                                        <!-- Activity Item 1 -->
-                                        <div class="activity-item status-excellent p-3 mb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h6 class="mb-1">Science Quiz</h6>
-                                                    <small class="text-muted">
-                                                        <i class="bi bi-clock me-1"></i>2 hours ago
-                                                    </small>
-                                                </div>
-                                                <div class="text-end">
-                                                    <span class="badge bg-success fs-6">91%</span>
-                                                    <div class="small text-muted">13/15 correct</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Activity Item 2 -->
-                                        <div class="activity-item status-good p-3 mb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h6 class="mb-1">Mathematics Quiz</h6>
-                                                    <small class="text-muted">
-                                                        <i class="bi bi-clock me-1"></i>1 day ago
-                                                    </small>
-                                                </div>
-                                                <div class="text-end">
-                                                    <span class="badge bg-warning text-dark fs-6">66%</span>
-                                                    <div class="small text-muted">10/15 correct</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Activity Item 3 -->
-                                        <div class="activity-item status-needs_improvement p-3 mb-3">
-                                            <div class="d-flex justify-content-between align-items-center">
-                                                <div>
-                                                    <h6 class="mb-1">Englsih Quiz</h6>
-                                                    <small class="text-muted">
-                                                        <i class="bi bi-clock me-1"></i>2 days ago
-                                                    </small>
-                                                </div>
-                                                <div class="text-end">
-                                                    <span class="badge bg-danger fs-6">100%</span>
-                                                    <div class="small text-muted">15/15 correct</div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-
-
-                                        <!-- View All Activity Link -->
-                                        <div class="text-center mt-3">
-                                            <a href="/mindquest/student/score" class="btn btn-outline-primary btn-sm">
-                                                <i class="bi bi-eye me-1"></i>View All Activity
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <!-- RIGHT COLUMN -->
-                            <div class="col-md-4">
-
-                                <!-- ORIGINAL PROFILE CARD FROM YOUR CODE -->
-                                <div class="col-mb-3">
-                                    <div class="card shadow-sm">
-                                        <div class="card-body">
-                                            <h5 class="card-title">My Profile</h5>
-                                            <p class="card-text">View or edit your profile details.</p>
-                                            <a href="/profile/student" class="btn btn-primary">Go</a>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <!-- QUICK ACTIONS CARD -->
-                                <div class="card mb-3">
-                                    <div class="card-header bg-white border-bottom">
-                                        <h5 class="mb-0">
-                                            <i class="bi bi-lightning me-2"></i>Quick Actions
-                                        </h5>
-                                    </div>
-                                    <div class="card-body">
-                                        <div class="d-grid gap-2">
-                                            <a href="/mindquest/student/subject" class="btn btn-success">
-                                                <i class="bi bi-play-fill me-2"></i>Take New Quiz
-                                            </a>
-                                            <a href="/mindquest/student/score" class="btn btn-outline-primary">
-                                                <i class="bi bi-graph-up me-2"></i>View All Scores
-                                            </a>
-                                            <a href="mindquest/student/subject" class="btn btn-outline-warning">
-                                                <i class="bi bi-arrow-repeat me-2"></i>Retry Low Scores
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
-
-
-                                <!-- Recent Badges -->
-                                <div>
-                                    <h6 class="mb-2">
-                                        <i class="bi bi-award me-2"></i>Recent Badges
-                                    </h6>
-                                    <span class="badge bg-warning me-1 mb-1">Speed Runner ⚡</span>
-                                    <span class="badge bg-success me-1 mb-1">Perfect Score 💯</span>
-                                    <span class="badge bg-info mb-1">Week Warrior 🗓️</span>
-                                </div>
-                            </div>
-                        </div>
-
+        <!-- STREAK SECTION + Original Welcome -->
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h2 class="mb-4 text-center text-uppercase fw-bold" style="color:#1abc9c;">Welcome, <%= user.username %></h2>
+          <div class="text-end">
+            <div class="d-flex align-items-center">
+              <span class="streak-fire fs-2">🔥</span>
+              <div class="ms-2">
+                <div class="fw-bold fs-4">7 days</div>
+                <small class="text-muted">Learning streak</small>
+              </div>
             </div>
+          </div>
         </div>
 
-        </main>
-        </div>
+        <!-- STATS CARDS -->
+        <div class="row mb-4">
+          <div class="col-md-3 mb-3">
+            <div class="card stats-card bg-primary text-white">
+              <div class="card-body text-center">
+                <i class="bi bi-list-check fs-1 mb-2"></i>
+                <h3 class="mb-1">45</h3>
+                <p class="mb-0">Quizzes Taken</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card stats-card bg-success text-white">
+              <div class="card-body text-center">
+                <i class="bi bi-check-circle fs-1 mb-2"></i>
+                <h3 class="mb-1">38</h3>
+                <p class="mb-0">Correct Answers</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card stats-card bg-warning text-white">
+              <div class="card-body text-center">
+                <i class="bi bi-graph-up fs-1 mb-2"></i>
+                <h3 class="mb-1">87%</h3>
+                <p class="mb-0">Average Score</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+            <div class="card stats-card bg-info text-white">
+              <div class="card-body text-center">
+                <i class="bi bi-trophy fs-1 mb-2"></i>
+                <h3 class="mb-1">Math</h3>
+                <p class="mb-0">Best Subject</p>
+              </div>
+            </div>
+          </div>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- MAIN CONTENT ROW -->
+        <div class="row">
+
+          <!-- RECENT ACTIVITY -->
+          <div class="col-md-8 mb-4">
+            <div class="card">
+              <div class="card-header bg-white border-bottom">
+                <h5 class="mb-0">
+                  <i class="bi bi-clock-history me-2"></i>Recent Activity
+                </h5>
+              </div>
+              <div class="card-body">
+
+                <!-- Activity Item 1 -->
+                <div class="activity-item status-excellent p-3 mb-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <h6 class="mb-1">Science Quiz</h6>
+                      <small class="text-muted">
+                        <i class="bi bi-clock me-1"></i>2 hours ago
+                      </small>
+                    </div>
+                    <div class="text-end">
+                      <span class="badge bg-success fs-6">91%</span>
+                      <div class="small text-muted">13/15 correct</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Activity Item 2 -->
+                <div class="activity-item status-good p-3 mb-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <h6 class="mb-1">Mathematics Quiz</h6>
+                      <small class="text-muted">
+                        <i class="bi bi-clock me-1"></i>1 day ago
+                      </small>
+                    </div>
+                    <div class="text-end">
+                      <span class="badge bg-warning text-dark fs-6">66%</span>
+                      <div class="small text-muted">10/15 correct</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Activity Item 3 -->
+                <div class="activity-item status-needs_improvement p-3 mb-3">
+                  <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                      <h6 class="mb-1">English Quiz</h6>
+                      <small class="text-muted">
+                        <i class="bi bi-clock me-1"></i>2 days ago
+                      </small>
+                    </div>
+                    <div class="text-end">
+                      <span class="badge bg-danger fs-6">100%</span>
+                      <div class="small text-muted">15/15 correct</div>
+                    </div>
+                  </div>
+                </div>
+
+
+
+
+
+                <!-- View All Activity Link -->
+                <div class="text-center mt-3">
+                  <a href="/mindquest/student/score" class="btn btn-outline-primary btn-sm">
+                    <i class="bi bi-eye me-1"></i>View All Activity
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT COLUMN -->
+          <div class="col-md-4">
+
+            <!-- ORIGINAL PROFILE CARD FROM YOUR CODE -->
+            <div class="col-mb-3">
+              <div class="card shadow-sm">
+                <div class="card-body">
+                  <h5 class="card-title">My Profile</h5>
+                  <p class="card-text">View or edit your profile details.</p>
+                  <a href="/profile/student" class="btn btn-primary">Go</a>
+                </div>
+              </div>
+            </div>
+
+            <!-- QUICK ACTIONS CARD -->
+            <div class="card mb-3">
+              <div class="card-header bg-white border-bottom">
+                <h5 class="mb-0">
+                  <i class="bi bi-lightning me-2"></i>Quick Actions
+                </h5>
+              </div>
+              <div class="card-body">
+                <div class="d-grid gap-2">
+                  <a href="/mindquest/student/subject" class="btn btn-success">
+                    <i class="bi bi-play-fill me-2"></i>Take New Quiz
+                  </a>
+                  <a href="/mindquest/student/score" class="btn btn-outline-primary">
+                    <i class="bi bi-graph-up me-2"></i>View All Scores
+                  </a>
+                  <a href="mindquest/student/subject" class="btn btn-outline-warning">
+                    <i class="bi bi-arrow-repeat me-2"></i>Retry Low Scores
+                  </a>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- Recent Badges -->
+            <div>
+              <h6 class="mb-2">
+                <i class="bi bi-award me-2"></i>Recent Badges
+              </h6>
+              <span class="badge bg-warning me-1 mb-1">Speed Runner ⚡</span>
+              <span class="badge bg-success me-1 mb-1">Perfect Score 💯</span>
+              <span class="badge bg-info mb-1">Week Warrior 🗓️</span>
+            </div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+
+  </main>
+  </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

@@ -32,6 +32,11 @@ class AuthController {
             // console.log(req.body);
             // console.log(req.body);
             const { username, email, password } = req.body
+
+            if (!username, !email, !password) {
+                return res.redirect("/auth/register?errors=All field are required")
+            }
+
             await User.create({
                 username,
                 email,
@@ -72,8 +77,7 @@ class AuthController {
             const user = await User.findByPk(req.session.userId, {
                 include: [{
                     model: Profile
-                }]
-            })
+                }]            })
 
             const profile = await Profile.findOne({
                 where: { UserId: req.session.userId }
@@ -137,17 +141,30 @@ class AuthController {
                     username: username
                 }
             })
+            // res.send(user)
+            console.log(user);
+            
+            
+
+            req.session.userId = user.id
+            req.session.role = user.role
+
             // const userName = users.find(u => u.username === username);
             // res.send(user)
+            if (!username || !password) {
+                return res.redirect('/auth/login?error=Username and password are required')
+            }
+
             const profile = await Profile.findOne({
                 where: {
                     UserId: user.id
                 }
             })
+
+
+
             if (user && bcrypt.compareSync(password, user.password)) {
 
-                req.session.userId = user.id
-                req.session.role = user.role
 
                 if (!profile) {
                     return res.redirect('/profile/add')
@@ -160,12 +177,13 @@ class AuthController {
                     return res.redirect('/mindquest/educator')
                 }
             } else {
-                return res.status(401).send('Invalid credentials');
+                return res.send('Invalid credentials');
             }
         } catch (error) {
             // console.log(error);
 
             res.send(error)
+            // res.redirect('/auth/login?error=An error occured during login')
         }
     }
 
