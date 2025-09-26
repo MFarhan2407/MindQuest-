@@ -1,6 +1,7 @@
 const eduController = require('../controllers/eduController')
 
 const route = require('express').Router()
+const upload = require("../middlewares/upload")
 
 
 route.get("/educator", eduController.dashBoard)
@@ -15,6 +16,6 @@ route.post("/educator/question/:id/delete", eduController.deleteQuestion)
 
 route.get("/educator/profile/:id/edit", eduController.showEditFormPage)
 
-route.post("/educator/profile/:id/edit", eduController.editProfile)
+route.post("/educator/profile/:id/edit", upload.single('avatar'), eduController.editProfile)
 
 module.exports = route

@@ -75,7 +75,11 @@ class AuthController {
                 }]
             })
 
-            res.render("stu-profile", { user })
+            const profile = await Profile.findOne({
+                where: { UserId: req.session.userId }
+            });
+
+            res.render("stu-profile", { user, profile })
         } catch (error) {
             res.send(error)
         }
