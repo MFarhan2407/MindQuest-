@@ -81,7 +81,11 @@ class eduController {
     static async myStudents(req, res) {
         try {
 
-            const students = await User.findAll()
+            const students = await User.findAll({
+                where: {
+                    role: 'STUDENT'
+                }
+            })
             const profile = await Profile.findAll()
             res.render("my-students", { students, profile })
 
@@ -108,28 +112,30 @@ class eduController {
 
     static async showEditFormPage(req, res) {
         try {
-            const { id } = req.params
+            // const { id } = req.params
             const userId = req.session.userId
+            // console.log(userId);
             
+
             const user = await User.findOne({
+                where: { id: userId },
                 include: {
                     model: Profile,
-                    where: {
-                        id: id
-                    }
+                    required: false
                 }
             })
+
+            // res.send(user)
+            // console.log(user);
             
-            const profile = await Profile.findOne({
-                where: {
-                    UserId: userId
-                }
-            })
-            // console.log(profile);
-            
-            
-            
-            
+            const profile = user.Profile || {
+                fullName: user.username,
+                email: user.email,
+                address: '',
+                bio: '',
+                avatar: ''
+            };
+
             res.render("edu-profile-edit", { user, profile })
         } catch (error) {
             res.send(error)
@@ -139,28 +145,56 @@ class eduController {
     static async editProfile(req, res) {
         try {
 
-            const userId = req.params.id;
-            const { name, email, address, bio } = req.body
+            const userId = req.session.userId;
+            const { fullName, email, address, bio } = req.body
+            // console.log(req.body);
+            // console.log(req.file);
+            console.log(userId);
+            
+
+            
+
+            let avatarPath;
 
             if (req.file) {
                 avatarPath = '/uploads/' + req.file.filename;
             }
 
 
-            const profile = await Profile.findOne({ where: { UserId: userId } });
+            await User.update({ email, username: fullName }, { where: { id: userId } });
+
+
+            let profile = await Profile.findOne({ where: { UserId: userId } });
 
             if (profile) {
-                await profile.update({
-                    name,
+
+                const updateData = {
+                    fullName,
+                    email,
+                    address,
+                    bio
+                }
+
+                if (avatarPath) {
+                    updateData.avatar = avatarPath
+                }
+
+                await profile.update(updateData)
+            } else {
+                await Profile.create({
+                    fullName,
                     email,
                     address,
                     bio,
-                    ...(avatarPath && { avatar: avatarPath })
-                });
+                    avatar: avatarPath,
+                    UserId: userId
+                })
             }
 
-            res.redirect('/mindquest/educator/profile');
+            res.redirect('/profile');
         } catch (error) {
+            console.error('Error in editProfile:', error);
+
             res.send(error)
         }
     }
