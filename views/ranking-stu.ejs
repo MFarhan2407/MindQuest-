@@ -14,6 +14,7 @@
       font-family: 'Montserrat', sans-serif;
     }
 
+    /* Sidebar */
     .sidebar {
       min-height: 100vh;
       background-color: #2f2f2f;
@@ -32,37 +33,31 @@
       color: #1abc9c;
     }
 
-    .card-outline {
-      border: 2px solid;
-      border-radius: 12px;
-      transition: 0.3s;
-    }
-
-    .card-outline:hover {
-      transform: translateY(-5px);
-      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-    }
-
-    .card-subject {
-      border-color: #1abc9c;
-    }
-
-    .card-challenge {
-      border-color: #474e5d;
-    }
-
-    .card-student {
-      border-color: #0d6efd;
-    }
-
+    /* Table */
     .table thead {
-      background-color: #474e5d;
+      background-color: #1abc9c;
       color: #fff;
     }
 
+    .table tbody tr:hover {
+      background-color: rgba(26, 188, 156, 0.1);
+    }
+
+    /* Heading */
     h1 {
       margin-bottom: 30px;
-      color: #333;
+      color: #1abc9c;
+      font-weight: 700;
+    }
+
+    /* Button */
+    .btn-success {
+      background-color: #1abc9c;
+      border: none;
+    }
+
+    .btn-success:hover {
+      background-color: #16a085;
     }
   </style>
 </head>
@@ -115,7 +110,7 @@
         </table>
 
         <div class="text-center mt-4">
-          <a href="/mindquest/student/" class="btn btn-primary">
+          <a href="/mindquest/student/" class="btn btn-success">
             ⬅️ Kembali ke Dashboard
           </a>
         </div>
